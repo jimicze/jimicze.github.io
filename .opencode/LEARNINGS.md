@@ -120,3 +120,16 @@
 - **GitHub Copilot**: Available for cloud-assisted code generation — not ideal for runtime CV data processing (privacy).
 - **Recommendation**: Use local LLM (LM Studio/Ollama) for all CV data operations (extraction, ATS scoring, cover letter). Use Copilot only for coding assistance within the agent session.
 - Privacy benefit: CV personal data never leaves the machine when using local models.
+
+---
+
+## GitHub / Deployment
+
+### 2026-04-23
+
+- **`jimicze.github.io` special repo**: GitHub automatically enables Pages for the `<username>.github.io` repo — no need to call the create-pages API, only `PUT build_type=workflow` to switch from branch to Actions deployment.
+- **`gh auth refresh` needs `workflow` scope** to push `.github/workflows/` files. Default `repo` scope is not enough. Run: `gh auth refresh -h github.com -s workflow`
+- **`gh auth refresh` is interactive** — prints a device code and waits for browser confirmation. Bash tool default timeout is 2 minutes; use `timeout: 300000` ms.
+- **Git operations protocol defaults to SSH** in gh CLI, but SSH keys may not be configured. Run `gh auth setup-git` to switch git credential helper to HTTPS token auth.
+- **Files staged before `.gitignore` update are not auto-unstaged.** Run `git rm --cached <file>` after adding to `.gitignore`. Amend before first push to keep personal data out of public history.
+- **GitHub Actions Node.js 20 deprecation**: `checkout@v4`, `configure-pages@v5`, `deploy-pages@v4`, `upload-artifact@v4` will stop on Node 20 after Sep 2026. Upgrade action versions or set `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true` before then.

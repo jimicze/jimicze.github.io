@@ -130,14 +130,14 @@ Cross-validate extracted `data/cv.json` against both files for completeness.
 | Docker base | `mcr.microsoft.com/playwright/python:latest` |
 
 ### Repo State (2026-04-23)
-- No source code yet.
-- `docs/CV-Lasak-EN-Dec-2025.pdf` is the only content artifact.
-- `AGENTS.md`, `PRD.md` written in first session.
-- `.opencode/*.md` fully structured and populated with research.
-- **Directory scaffold in place**: `src/`, `data/`, `templates/html/{ats,color,simple,full}/`, `templates/docx/`, `output/`, `tests/`
-- **`pyproject.toml`** and **`package.json`** written; deps declared but NOT yet installed.
-- **`.gitignore`** in place.
-- **Hard dependency**: extracting `data/cv.json` unlocks all Epic 1 work.
+- **Live CV:** https://jimicze.github.io/ — deployed via GitHub Actions on every push to `main`
+- **GitHub repo:** https://github.com/jimicze/jimicze.github.io (public)
+- **Local repo:** `/Users/lasakondrej/Projects/ATS-cv` — remote = `origin` on HTTPS
+- `data/cv.json` extracted, gitignored, local-only — source of truth for all rendering
+- `public/index.html` committed — professional single-column HTML CV, serves from GitHub Pages
+- `.github/workflows/deploy.yml` — auto-deploys `public/` on push to `main`
+- All project scaffold in place: `src/`, `templates/`, `data/`, `output/`, `tests/`, `public/`
+- **Hard dependency resolved:** `data/cv.json` exists — Epic 1 pipeline work can begin
 
 ### Key Reference Projects
 | Project | URL | What to borrow |

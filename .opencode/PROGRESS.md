@@ -15,7 +15,7 @@
 - [ ] User reviews extracted `data/cv.json` via browser (not raw JSON)
 - [x] **[BLOCKING]** Extract `data/cv.json` ✅ done 2026-04-23 — cross-validated from both sources, full JSON Resume schema
 - [ ] User reviews extracted `data/cv.json` via browser (not raw JSON)
-- [ ] Create GitHub repo on `jimicze` account + enable GitHub Pages for live HTML CV
+- [x] Create GitHub repo `jimicze/jimicze.github.io` (public) + GitHub Pages via Actions ✅ live at https://jimicze.github.io/
 - [x] Scaffold project directory structure (`src/`, `templates/`, `data/`, `output/`, `tests/`)
 - [x] Set up `pyproject.toml` + `package.json` (hybrid Python + Node stack)
 - [x] Add `output/`, `data/cv.json`, `.env` to `.gitignore`
@@ -46,6 +46,10 @@
 - [x] Created `package.json` (React 18, TypeScript, Vite, Tiptap v2, Playwright, Vitest)
 - [x] Updated `AGENTS.md` commands table with actual install/dev/test commands
 - [x] Extracted `data/cv.json` from both source documents (pypdf + DOCX XML unpack); cross-validated; full JSON Resume schema with `_meta` extensions; 11 work entries, 4 education entries, 11 certificates, 10 skill categories, 4 languages, 6 projects
+- [x] Created `public/index.html` — professional single-column HTML CV (ATS-safe, print-ready, all links live)
+- [x] Created `.github/workflows/deploy.yml` — GitHub Actions auto-deploy to GitHub Pages on push to `main`
+- [x] Created GitHub repo `jimicze/jimicze.github.io` (public) — live at **https://jimicze.github.io/**
+- [x] First deploy successful — workflow ran in 16 seconds
 
 ---
 

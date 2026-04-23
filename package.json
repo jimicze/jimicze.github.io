@@ -1,0 +1,49 @@
+{
+  "name": "ats-cv",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-assisted ATS CV optimizer — React/TypeScript frontend",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@tiptap/core": "^2.4",
+    "@tiptap/extension-bold": "^2.4",
+    "@tiptap/extension-bullet-list": "^2.4",
+    "@tiptap/extension-document": "^2.4",
+    "@tiptap/extension-history": "^2.4",
+    "@tiptap/extension-italic": "^2.4",
+    "@tiptap/extension-link": "^2.4",
+    "@tiptap/extension-list-item": "^2.4",
+    "@tiptap/extension-ordered-list": "^2.4",
+    "@tiptap/extension-paragraph": "^2.4",
+    "@tiptap/extension-placeholder": "^2.4",
+    "@tiptap/extension-text": "^2.4",
+    "@tiptap/react": "^2.4",
+    "react": "^18.3",
+    "react-dom": "^18.3",
+    "react-hook-form": "^7.52",
+    "zod": "^3.23"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45",
+    "@types/react": "^18.3",
+    "@types/react-dom": "^18.3",
+    "@typescript-eslint/eslint-plugin": "^7.13",
+    "@typescript-eslint/parser": "^7.13",
+    "@vitejs/plugin-react": "^4.3",
+    "eslint": "^8.57",
+    "typescript": "^5.5",
+    "vite": "^5.3",
+    "vitest": "^1.6"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

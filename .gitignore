@@ -1,0 +1,57 @@
+# ── Generated output (never commit) ──────────────────────────────────────────
+output/
+
+# ── CV personal data (never commit) ──────────────────────────────────────────
+data/cv.json
+
+# ── Source CV documents (input files — local pipeline only, not for public repo) ──
+docs/*.pdf
+docs/*.docx
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+.Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── Node / JavaScript ─────────────────────────────────────────────────────────
+node_modules/
+dist/
+.next/
+.cache/
+*.tsbuildinfo
+
+# ── Playwright ────────────────────────────────────────────────────────────────
+playwright-report/
+test-results/
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ── Editors ───────────────────────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# ── Keep empty tracked directories ───────────────────────────────────────────
+!data/.gitkeep
+!output/.gitkeep

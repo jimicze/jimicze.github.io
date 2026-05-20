@@ -129,17 +129,29 @@
       margin-bottom: 1.5rem;
     }
     .work-group .company-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
       font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
+      font-size: 0.97rem;
+      margin-bottom: 0.1rem;
     }
     .work-group .company-heading a { color: var(--text); }
-    .work-group .company-heading span {
+    .work-group .company-heading .dates {
       font-size: 0.83rem;
       font-weight: 400;
       color: var(--muted);
-      margin-left: 0.5rem;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
+    .work-group .company-location {
+      font-size: 0.88rem;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .work-group .company-location a { color: var(--accent); }
     .work-group .role { margin-bottom: 1.1rem; }
     .work-group .role:last-child { margin-bottom: 0; }
     .work-group .role .role-header {
@@ -150,8 +162,8 @@
       flex-wrap: wrap;
     }
     .work-group .role .role-title {
-      font-weight: 600;
-      font-size: 0.93rem;
+      font-weight: 700;
+      font-size: 0.97rem;
     }
     .work-group .role .dates {
       font-size: 0.83rem;
@@ -303,8 +315,10 @@ eGovernment · Prague, Czech Republic          </div>
 
         <div class="work-group">
           <div class="company-heading">
-<a href="https://www.vendavo.com" target="_blank" rel="noopener">Vendavo</a>            <span>Apr 2024 – Dec 2025 · Prague, Czech Republic</span>
+            <span><a href="https://www.vendavo.com" target="_blank" rel="noopener">Vendavo</a></span>
+            <span class="dates">Apr 2024 – Dec 2025</span>
           </div>
+          <div class="company-location">Prague, Czech Republic</div>
 
           <div class="role">
             <div class="role-header">

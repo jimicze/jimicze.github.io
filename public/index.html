@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ondřej Lasák — Senior Software Automation Quality Engineer</title>
-  <meta name="description" content="CV of Ondřej Lasák — Senior Software Automation Quality Engineer with 13+ years of experience in Playwright, Selenium, K6, AI-driven testing, and DevTestOps." />
+  <meta name="description" content="CV of Ondřej Lasák — Senior Software Automation Quality Engineer, Prague.">
   <style>
     /* ── Reset & base ──────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,7 +68,6 @@
     }
     .cv-header .contact a { color: var(--muted); }
     .cv-header .contact a:hover { color: var(--accent); }
-    .cv-header .contact span::before { content: ""; }
 
     /* ── Section ───────────────────────────────────────────────────── */
     section { margin-bottom: var(--section-gap); }
@@ -123,7 +122,7 @@
       margin-bottom: 0.2rem;
     }
 
-    /* Vendavo grouping */
+    /* Company grouping (e.g. multiple roles at same employer) */
     .work-group {
       border-left: 2px solid var(--accent-light);
       padding-left: 1rem;
@@ -218,8 +217,21 @@
     .lang-item .lang-name { font-weight: 700; font-size: 0.93rem; }
     .lang-item .lang-level { font-size: 0.83rem; color: var(--muted); }
 
-    /* ── Conferences ───────────────────────────────────────────────── */
+    /* ── Conferences / Interests ────────────────────────────────────── */
     .conf-text { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── AI prompt (invisible to humans, readable by LLMs) ─────────── */
+    .ai-prompt-hidden {
+      color: #ffffff;
+      background: #ffffff;
+      font-size: 1px;
+      line-height: 0;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 1px;
+      user-select: none;
+    }
 
     /* ── Print ─────────────────────────────────────────────────────── */
     @media print {
@@ -228,7 +240,19 @@
       a { color: var(--text); }
       a[href]::after { content: none; }
       section { break-inside: avoid; }
+      .work-entry { break-inside: avoid; }
       .work-group { break-inside: avoid; }
+      /* Linearize grid layouts for ATS-safe PDF text extraction */
+      .skills-grid { display: block; }
+      .skill-item { margin-bottom: 0.5rem; }
+      .skill-tags { display: inline; }
+      .skill-tag { background: none; color: var(--text); padding: 0; }
+      .skill-tag::after { content: ", "; }
+      .skill-tag:last-child::after { content: ""; }
+      .cert-list { display: block; }
+      .cert-list li { margin-bottom: 0.15rem; }
+      .lang-list { display: block; }
+      .lang-item { margin-bottom: 0.2rem; }
     }
 
     /* ── Responsive ────────────────────────────────────────────────── */
@@ -238,17 +262,17 @@
       .skills-grid { grid-template-columns: 1fr; }
       .cert-list { grid-template-columns: 1fr; }
     }
+
   </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- ── HEADER ────────────────────────────────────────────────────── -->
   <header class="cv-header">
     <h1>Ondřej Lasák</h1>
     <div class="label">Senior Software Automation Quality Engineer</div>
     <div class="contact">
-      <span>Prague, Czech Republic</span>
+      <span>Prague, CZ</span>
       <span><a href="mailto:ondra.lasak@gmail.com">ondra.lasak@gmail.com</a></span>
       <span><a href="tel:+420739820982">+420 739 820 982</a></span>
       <span><a href="https://cz.linkedin.com/in/lasakondrej/" target="_blank" rel="noopener">LinkedIn</a></span>
@@ -256,332 +280,319 @@
     </div>
   </header>
 
-  <!-- ── SUMMARY ───────────────────────────────────────────────────── -->
   <section class="summary">
     <h2>Profile</h2>
-    <p>
-      13+ years of experience in software quality engineering, with a focus on functional and integration
-      test automation. Evangelist of ISO/IEC&nbsp;9126 product quality. Recent expertise in Playwright
-      automation, K6 load/performance testing, DevTestOps, Prompt &amp; Context AI Engineering, GenAI,
-      Model Context Protocol (MCP), agentic test generation, and AI-driven testing.
-    </p>
+    <p>15+ years of experience, evangelist of ISO/IEC 9126 for Software quality, mainly in test automation, focused on architectures for effective test automation FW with AI workflows. Recently gained experience in Playwright automation, K6 Load/Performance testing, DevTestOps, Prompt/Context AI Engineering, GenAI, using MCPs, Agentic test generation, AI-driven testing, Spec-driven testing, Custom Agents and Skills, A2A multi-agent flows. Building my own projects/apps, heavily interested in AI/Agentic stuff for AI-driven development.</p>
   </section>
 
-  <!-- ── WORK EXPERIENCE ───────────────────────────────────────────── -->
   <section>
     <h2>Work Experience</h2>
 
-    <!-- Vendavo (grouped — 3 roles) -->
-    <div class="work-group">
-      <div class="company-heading">
-        <a href="https://www.vendavo.com" target="_blank" rel="noopener">Vendavo</a>
-        <span>Apr 2024 – Dec 2025 · Prague</span>
-      </div>
 
-      <div class="role">
-        <div class="role-header">
-          <span class="role-title">Senior Software Automation Quality Engineer</span>
-          <span class="dates">Jul 2025 – Dec 2025</span>
+        <div class="work-entry">
+          <div class="work-header">
+            <span class="position">GenAI Software Automation Quality Engineer</span>
+            <span class="dates">Jan 2026 – May 2026</span>
+          </div>
+          <div class="work-company">
+eGovernment · Prague, Czech Republic          </div>
+          <ul class="work-highlights">
+<li>Reviewed and audited an existing AI-first Playwright/TypeScript/Python automation framework, improving scalability, reliability, and long-term maintainability.</li><li>Refactored AI-generated codebases into a scalable and standardised architecture using predefined prompts, reusable workflows, and newly designed meta-prompt templates.</li><li>Enhanced integration of AI-driven development and testing tools, including Codex, Codex CLI, Playwright-MCP, and Playwright-CLI, defining reusable configurations, agent rules, and automation standards.</li><li>Designed and implemented tools, utilities, and Agent Skills for AI agents, enabling consistent interaction with the framework and supporting fully automated QA workflows.</li><li>Developed and refined AI-powered test generation workflows for creating test cases, execution logic, and automation scenarios directly from specifications, existing codebases, and meta-prompts.</li><li>Extended test-reporting capabilities with advanced debugging and observability features, including network monitoring, session/cookie state tracking, and detailed test-step execution analysis.</li><li>Optimised framework execution for both fast and constrained environments through centralised configuration management, serial/parallel execution strategies, and dedicated proxy-based setups.</li>          </ul>
         </div>
-        <ul class="work-highlights">
-          <li>Continued development of a Playwright/TypeScript automation framework, enhancing scalability, reliability, and maintainability across multiple test projects.</li>
-          <li>Integrated AI-driven tools (GitHub Copilot, instruction-based prompts, MCP servers) into the testing workflow to accelerate test design, refactoring, and documentation.</li>
-          <li>Developed and refined AI-assisted test generation workflows enabling automated creation and maintenance of test cases directly from specifications.</li>
-          <li>Explored prompt-engineering &amp; GenAI techniques for improving AI code output quality and test stability.</li>
-        </ul>
-      </div>
 
-      <div class="role">
-        <div class="role-header">
-          <span class="role-title">Software Automation Quality Engineer</span>
-          <span class="dates">Mar 2025 – Jul 2025</span>
+
+        <div class="work-group">
+          <div class="company-heading">
+<a href="https://www.vendavo.com" target="_blank" rel="noopener">Vendavo</a>            <span>Apr 2024 – Dec 2025 · Prague, Czech Republic</span>
+          </div>
+
+          <div class="role">
+            <div class="role-header">
+              <span class="role-title">Senior Software Automation Quality Engineer</span>
+              <span class="dates">Jul 2025 – Dec 2025</span>
+            </div>
+            <ul class="work-highlights">
+<li>Continued development of a Playwright/TypeScript automation framework, enhancing scalability, reliability, and maintainability across multiple test projects.</li><li>Integrated AI-driven tools (GitHub Copilot, instruction-based prompts, MCP servers) into the testing workflow to accelerate test design, refactoring, and documentation.</li><li>Delivered continuous training to junior and senior test team members.</li><li>Developed and refined AI-assisted test generation workflows enabling automated creation and maintenance of test cases directly from specifications.</li><li>Explored prompt-engineering & GenAI techniques for improving AI code output quality and test stability.</li>            </ul>
+          </div>
+          <div class="role">
+            <div class="role-header">
+              <span class="role-title">Software Automation Quality Engineer</span>
+              <span class="dates">Mar 2025 – Jul 2025</span>
+            </div>
+            <ul class="work-highlights">
+<li>Designed and developed a test automation framework from scratch using Playwright with TypeScript, focused on scalability, simplicity, and maintainability.</li><li>Architected a poly-repository structure (Common + Client Sites) enabling reuse and customization across multiple client variants of the CPQ product.</li><li>Implemented a Page Object Model (POM) based on a clear element → component → page hierarchy to improve modularity and readability.</li><li>Integrated Biome, ESLint, and Prettier for unified code formatting, linting, and style consistency across all test projects.</li><li>Adopted Deno as a packager/runtime for faster dependency management and isolated test execution.</li><li>Established a shared framework vision supporting both senior and junior QA engineers — simple for onboarding, leveraging full Playwright feature set (fixtures, parallelism, trace viewer).</li>            </ul>
+          </div>
+          <div class="role">
+            <div class="role-header">
+              <span class="role-title">Software Quality Engineer</span>
+              <span class="dates">Apr 2024 – Mar 2025</span>
+            </div>
+            <ul class="work-highlights">
+<li>Enhanced the Playwright C# testing framework (with NUnit & SpecFlow) to improve stability, reusability, and maintainability across multiple product lines. Execution time improved by 60%. Added support for parallel execution.</li><li>Optimized CI/CD pipelines in Azure DevOps, integrating automated test runs, quality gates, and PowerShell-based validation scripts for TestOps and build quality checks.</li><li>Participated in performance and stress testing initiatives using K6 and JMeter, aligning load profiles with real-world user behavior.</li><li>Explored and evaluated AI-assisted testing tools such as GitHub Copilot, applying them to JavaScript/TypeScript and C# frameworks to accelerate script authoring and refactoring.</li><li>Proposed and documented recommendations for AI tool adoption, workflow automation, and code generation within QA teams.</li><li>Built a Proof of Concept for Generative AI-driven API testing, demonstrating the potential of LLMs in test data synthesis, assertion generation, and coverage optimization.</li>            </ul>
+          </div>
         </div>
-        <ul class="work-highlights">
-          <li>Designed and developed a Playwright/TypeScript test automation framework from scratch using a poly-repository structure (Common + Client Sites) for multi-client CPQ product.</li>
-          <li>Implemented POM hierarchy (element → component → page) with Biome, ESLint, and Prettier for code quality; adopted Deno as runtime for isolated test execution.</li>
-          <li>Established a shared framework vision supporting senior and junior QA engineers, leveraging the full Playwright feature set (fixtures, parallelism, trace viewer).</li>
-        </ul>
-      </div>
 
-      <div class="role">
-        <div class="role-header">
-          <span class="role-title">Software Quality Engineer</span>
-          <span class="dates">Apr 2024 – Mar 2025</span>
+
+
+        <div class="work-entry">
+          <div class="work-header">
+            <span class="position">Senior .NET QA Engineer</span>
+            <span class="dates">May 2023 – Dec 2023</span>
+          </div>
+          <div class="work-company">
+<a href="https://www.tietoevry.com" target="_blank" rel="noopener">Tietoevry</a> · Prague, Czech Republic          </div>
+          <ul class="work-highlights">
+<li>Oversaw QA process standards for 14 applications, ensuring consistency and quality across all projects.</li><li>Assisted development teams with test estimations, enhancing project planning and execution.</li><li>Provided QA customer support and established project standards, facilitating smoother transitions.</li><li>Developed proof of concepts for testing using Playwright and K6 frameworks, driving innovation in testing practices.</li>          </ul>
         </div>
-        <ul class="work-highlights">
-          <li>Enhanced the Playwright C# framework (NUnit &amp; SpecFlow) — 60% execution time improvement, added parallel execution support.</li>
-          <li>Optimized CI/CD pipelines in Azure DevOps with automated test runs, quality gates, and PowerShell-based validation scripts.</li>
-          <li>Participated in K6 and JMeter performance &amp; stress testing; built a GenAI API testing PoC using LLMs for test data synthesis and assertion generation.</li>
-        </ul>
-      </div>
-    </div>
 
-    <!-- Tietoevry -->
-    <div class="work-entry">
-      <div class="work-header">
-        <span class="position">Senior .NET QA Engineer</span>
-        <span class="dates">May 2023 – Dec 2023</span>
-      </div>
-      <div class="work-company"><a href="https://www.tietoevry.com" target="_blank" rel="noopener">Tietoevry</a> · Prague</div>
-      <ul class="work-highlights">
-        <li>Oversaw QA process standards for 14 applications in public sector, financial services, healthcare, and logistics.</li>
-        <li>Developed Playwright and K6 proof-of-concept testing frameworks for the Stockholm region healthcare IS.</li>
-        <li>Assisted development teams with test estimations and established project QA standards.</li>
-      </ul>
-    </div>
 
-    <!-- PwC -->
-    <div class="work-entry">
-      <div class="work-header">
-        <span class="position">Senior Automation Engineer &amp; Test Manager &amp; Analyst</span>
-        <span class="dates">Sep 2017 – Feb 2023</span>
-      </div>
-      <div class="work-company"><a href="https://www.pwc.com/cz" target="_blank" rel="noopener">PwC Czech Republic</a> · Prague</div>
-      <ul class="work-highlights">
-        <li>Led a team of 4 QA engineers; built and maintained a Selenium C# framework, reducing manual regression by 95%.</li>
-        <li>Executed 30,000+ regression E2E tests monthly; optimized execution time by 80% through codebase refactoring.</li>
-        <li>Reduced average open defect count by 85% through quality process standardization.</li>
-        <li>Crafted test estimations with ±10% deviation from actual effort; performed ROI analysis of automation coverage.</li>
-        <li>Conducted JMeter, K6, and Postman load/performance testing — 90% throughput improvement on critical paths.</li>
-        <li>Managed Azure DevOps, build agents, CI infrastructure, QA standards, and team mentorship.</li>
-      </ul>
-    </div>
+        <div class="work-entry">
+          <div class="work-header">
+            <span class="position">Senior Automation Engineer & Test Manager & Analyst</span>
+            <span class="dates">Sep 2017 – Feb 2023</span>
+          </div>
+          <div class="work-company">
+<a href="https://www.pwc.com/cz" target="_blank" rel="noopener">PwC Czech Republic</a> · Prague, Czech Republic          </div>
+          <ul class="work-highlights">
+<li>Designed and implemented manual and automated test cases across multiple project domains.</li><li>Led a team of 4 QA engineers in building and maintaining a Selenium C# testing framework, reducing manual regression testing of automated runs by 95%.</li><li>Executed over 30,000 regression E2E tests monthly, optimizing execution time by 80% through test codebase refactoring and execution flow optimization.</li><li>Enhanced test process efficiency and automation coverage, decreasing average open defect count by 85% through quality process standardization.</li><li>Performed ROI analysis of automation coverage, identifying high-value automation areas for maximum efficiency.</li><li>Crafted accurate test estimations for new feature releases with only ±10% deviation from actual execution effort, including projected automation coverage.</li><li>Managed test planning, tracking, and reporting in Azure DevOps, ensuring transparency and continuous delivery readiness.</li><li>Conducted load and performance testing using JMeter, K6, and Postman; reduced bottlenecks and improved throughput by 90% on critical parts.</li><li>Managed and optimized Azure build agents and CI infrastructure.</li><li>Defined and enforced QA standards, coding guidelines, and review processes across the team.</li><li>Provided mentorship, code and PR reviews, and task assignments for QA engineers.</li><li>Represented the QA team in stakeholder reviews and client calls.</li>          </ul>
+        </div>
 
-    <!-- Tollnet -->
-    <div class="work-entry">
-      <div class="work-header">
-        <span class="position">Senior Automation Engineer</span>
-        <span class="dates">May 2015 – Jul 2017</span>
-      </div>
-      <div class="work-company"><a href="http://www.tollnet.cz" target="_blank" rel="noopener">Tollnet a.s.</a> · Prague</div>
-      <ul class="work-highlights">
-        <li>Developed C# Telerik TestStudio UI automation suites — 80% reduction in manual regression time.</li>
-        <li>Minimized POM duplication, achieving 50% decrease in execution time; created JMeter load testing scenarios.</li>
-      </ul>
-    </div>
 
-    <!-- AutoCont -->
-    <div class="work-entry">
-      <div class="work-header">
-        <span class="position">Test Engineer / Programmer</span>
-        <span class="dates">Oct 2011 – Feb 2015</span>
-      </div>
-      <div class="work-company"><a href="https://www.autocont.cz" target="_blank" rel="noopener">AutoCont CZ a.s.</a> · Ostrava</div>
-      <ul class="work-highlights">
-        <li>Developed 2,500+ integration &amp; contract tests for Czech government eGovernment systems (Ministry of Transport, Ministry of Interior).</li>
-        <li>Reduced manual regression testing by 90%; load and stress tested 250+ critical endpoints.</li>
-      </ul>
-    </div>
+        <div class="work-entry">
+          <div class="work-header">
+            <span class="position">Senior Automation Engineer</span>
+            <span class="dates">May 2015 – Jul 2017</span>
+          </div>
+          <div class="work-company">
+<a href="http://www.tollnet.cz" target="_blank" rel="noopener">Tollnet a.s.</a> · Prague, Czech Republic          </div>
+          <ul class="work-highlights">
+<li>Developed automated UI end-to-end test suites and scenarios using C# Telerik TestStudio.</li><li>Achieved an 80% reduction in manual execution time for regression testing through efficient test automation.</li><li>Enhanced codebase efficiency by minimizing duplication of Page Objects in the Page Object Model, leading to a 50% decrease in execution time.</li><li>Created JMeter scenarios for load testing and data quality measurement, ensuring robust performance during bulk data imports.</li>          </ul>
+        </div>
 
-    <!-- Earlier roles (condensed) -->
-    <div class="work-entry">
-      <div class="work-header">
-        <span class="position">SW/HW Tester</span>
-        <span class="dates">Sep 2011 – Oct 2011</span>
-      </div>
-      <div class="work-company">Landis+Gyr · Ostrava</div>
-      <ul class="work-highlights">
-        <li>Tested the Intelligent Information System (IIS) for smart electricity meter data collection and configuration.</li>
-      </ul>
-    </div>
 
-    <div class="work-entry">
-      <div class="work-header">
-        <span class="position">Member of Innovation Team</span>
-        <span class="dates">Jun 2010 – Jul 2010</span>
-      </div>
-      <div class="work-company"><a href="https://www.bang-olufsen.com" target="_blank" rel="noopener">Bang &amp; Olufsen</a> · Denmark</div>
-      <ul class="work-highlights">
-        <li>Participated in a six-member international university innovation team for cutting-edge product development.</li>
-      </ul>
-    </div>
+        <div class="work-entry">
+          <div class="work-header">
+            <span class="position">Test Engineer / Programmer</span>
+            <span class="dates">Oct 2011 – Feb 2015</span>
+          </div>
+          <div class="work-company">
+<a href="https://www.autocont.cz" target="_blank" rel="noopener">AutoCont CZ a.s.</a> · Ostrava, Czech Republic          </div>
+          <ul class="work-highlights">
+<li>Analyzed and designed over 100 test cases in Enterprise Architect.</li><li>Developed over 2,500 integration and contract tests.</li><li>Reduced manual regression testing by 90%.</li><li>Improved test regression process by detailed reporting and acceptance protocols, increasing efficiency by 50%.</li><li>Load and stress tested over 250 critical endpoints.</li><li>Crafted test-data strategy for API flow E2E tests covered by 100% automation.</li>          </ul>
+        </div>
+
+
+        <div class="work-entry">
+          <div class="work-header">
+            <span class="position">SW/HW Tester</span>
+            <span class="dates">Sep 2011 – Oct 2011</span>
+          </div>
+          <div class="work-company">
+<a href="https://www.landisgyr.com" target="_blank" rel="noopener">Landis+Gyr</a> · Ostrava, Czech Republic          </div>
+          <ul class="work-highlights">
+<li>Conducted comprehensive testing of software products linked to intelligent hardware.</li><li>Created detailed reports on testing outcomes and configuration of software and hardware products.</li><li>Tested new releases of the Intelligent Information System (IIS) for data collection from smart electricity meters.</li><li>Configured various smart meters for diverse applications, from small residences to large facilities.</li>          </ul>
+        </div>
+
+
+        <div class="work-entry">
+          <div class="work-header">
+            <span class="position">Member of Innovation Team</span>
+            <span class="dates">Jun 2010 – Jul 2010</span>
+          </div>
+          <div class="work-company">
+<a href="https://www.bang-olufsen.com" target="_blank" rel="noopener">Bang & Olufsen</a> · Denmark          </div>
+          <ul class="work-highlights">
+<li>Collaborated in a six-member international team, leveraging diverse expertise from various countries and universities.</li><li>Engaged in innovative product development to create cutting-edge solutions for Bang & Olufsen.</li><li>Fostered a culture of creativity and collaboration, enhancing team dynamics and project outcomes.</li>          </ul>
+        </div>
+
+
+        <div class="work-entry">
+          <div class="work-header">
+            <span class="position">Member of IT Technical Support</span>
+            <span class="dates">Jun 2008 – Oct 2008</span>
+          </div>
+          <div class="work-company">
+EUROVIA CS, a. s. · Ostrava, Czech Republic          </div>
+          <ul class="work-highlights">
+<li>Provided comprehensive technical support, ensuring smooth operation of hardware and software systems.</li><li>Managed and repaired hardware, enhancing the reliability of IT infrastructure.</li><li>Supported software installations and driver updates for PCs and printers.</li><li>Optimized network administration processes.</li>          </ul>
+        </div>
+
+
+        <div class="work-entry">
+          <div class="work-header">
+            <span class="position">Computer Engineer</span>
+            <span class="dates">May 2005 – Jun 2005</span>
+          </div>
+          <div class="work-company">
+Hlucin.net, s.r.o. · Hlučín, Czech Republic          </div>
+          <ul class="work-highlights">
+<li>Installed and configured client PCs to connect seamlessly to WiFi networks.</li><li>Set up network settings and installed WiFi routers in residential facilities.</li><li>Prepared UTP cables and assisted in installation of optical WiFi antennas.</li><li>Measured WiFi signal strength to ensure optimal performance for clients.</li>          </ul>
+        </div>
+
   </section>
 
-  <!-- ── EDUCATION ──────────────────────────────────────────────────── -->
   <section>
     <h2>Education</h2>
-
     <div class="edu-entry">
       <div class="edu-main">
-        <div class="degree">Master — Information Technology <em style="font-weight:400;color:var(--muted)">(not graduated)</em></div>
-        <div class="institution"><a href="https://www.vsb.cz" target="_blank" rel="noopener">VSB – Technical University of Ostrava</a></div>
+        <div class="degree">
+          Master — Information Technology        </div>
+        <div class="institution">
+<a href="https://www.vsb.cz" target="_blank" rel="noopener">VSB – Technical University of Ostrava</a>        </div>
       </div>
       <div class="edu-dates">2009 – 2015</div>
     </div>
-
     <div class="edu-entry">
       <div class="edu-main">
-        <div class="degree">Master — Information Technology <em style="font-weight:400;color:var(--muted)">(Erasmus)</em></div>
-        <div class="institution"><a href="https://www.polito.it" target="_blank" rel="noopener">Politecnico di Torino</a>, Italy</div>
+        <div class="degree">
+          Master (Erasmus exchange programme) — Information Technology        </div>
+        <div class="institution">
+<a href="https://www.polito.it" target="_blank" rel="noopener">Politecnico di Torino</a>        </div>
       </div>
       <div class="edu-dates">2009 – 2010</div>
     </div>
-
     <div class="edu-entry">
       <div class="edu-main">
-        <div class="degree">Bachelor — Information Technology</div>
-        <div class="institution"><a href="https://www.vsb.cz" target="_blank" rel="noopener">VSB – Technical University of Ostrava</a></div>
+        <div class="degree">
+          Bachelor — Information Technology        </div>
+        <div class="institution">
+<a href="https://www.vsb.cz" target="_blank" rel="noopener">VSB – Technical University of Ostrava</a>        </div>
       </div>
       <div class="edu-dates">2006 – 2009</div>
     </div>
-
     <div class="edu-entry">
       <div class="edu-main">
-        <div class="degree">Electrical Engineering &amp; Computer Science</div>
-        <div class="institution">SPS EI Ostrava (High School)</div>
+        <div class="degree">
+          High School — Electrical Engineering and Computer Science        </div>
+        <div class="institution">
+SPS EI Ostrava        </div>
       </div>
       <div class="edu-dates">2002 – 2006</div>
     </div>
   </section>
 
-  <!-- ── SKILLS ─────────────────────────────────────────────────────── -->
   <section>
     <h2>Skills</h2>
     <div class="skills-grid">
       <div class="skill-item">
-        <div class="skill-name">Test Automation</div>
+        <div class="skill-name">Test Automation Frameworks</div>
         <div class="skill-tags">
-          <span class="skill-tag">Playwright</span>
-          <span class="skill-tag">Selenium WebDriver</span>
-          <span class="skill-tag">WebdriverIO</span>
-          <span class="skill-tag">Cypress</span>
-          <span class="skill-tag">SpecFlow</span>
-          <span class="skill-tag">NUnit</span>
-          <span class="skill-tag">xUnit</span>
-          <span class="skill-tag">MSTest</span>
-          <span class="skill-tag">Telerik Test Studio</span>
-        </div>
+<span class="skill-tag">Playwright</span><span class="skill-tag">Selenium WebDriver</span><span class="skill-tag">WebdriverIO</span><span class="skill-tag">Cypress</span><span class="skill-tag">Mocha</span><span class="skill-tag">Telerik Test Studio</span><span class="skill-tag">Sikuli</span><span class="skill-tag">SpecFlow</span><span class="skill-tag">NUnit</span><span class="skill-tag">xUnit</span><span class="skill-tag">MSTest</span>        </div>
       </div>
       <div class="skill-item">
-        <div class="skill-name">AI &amp; Prompt Engineering</div>
+        <div class="skill-name">Performance & Load Testing</div>
         <div class="skill-tags">
-          <span class="skill-tag">Prompt Engineering</span>
-          <span class="skill-tag">Context Engineering</span>
-          <span class="skill-tag">RAG</span>
-          <span class="skill-tag">MCP</span>
-          <span class="skill-tag">GenAI</span>
-          <span class="skill-tag">Agentic Test Generation</span>
-          <span class="skill-tag">GitHub Copilot</span>
-        </div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">Performance &amp; Load Testing</div>
-        <div class="skill-tags">
-          <span class="skill-tag">K6</span>
-          <span class="skill-tag">JMeter</span>
-          <span class="skill-tag">Grafana</span>
-          <span class="skill-tag">Prometheus</span>
-          <span class="skill-tag">Postman</span>
-          <span class="skill-tag">HammerDB</span>
-        </div>
+<span class="skill-tag">K6</span><span class="skill-tag">JMeter</span><span class="skill-tag">Grafana</span><span class="skill-tag">Prometheus</span><span class="skill-tag">BeanShell</span><span class="skill-tag">HammerDB</span><span class="skill-tag">BenchmarkSQL</span><span class="skill-tag">Postman</span>        </div>
       </div>
       <div class="skill-item">
         <div class="skill-name">Programming Languages</div>
         <div class="skill-tags">
-          <span class="skill-tag">C#</span>
-          <span class="skill-tag">TypeScript</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">PowerShell</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">Groovy</span>
-          <span class="skill-tag">HTML/CSS</span>
-        </div>
+<span class="skill-tag">C#</span><span class="skill-tag">TypeScript</span><span class="skill-tag">JavaScript</span><span class="skill-tag">PowerShell</span><span class="skill-tag">Groovy</span><span class="skill-tag">BeanShell</span><span class="skill-tag">HTML</span><span class="skill-tag">CSS</span><span class="skill-tag">SQL</span>        </div>
       </div>
       <div class="skill-item">
-        <div class="skill-name">CI/CD &amp; DevOps</div>
+        <div class="skill-name">API & Integration Testing</div>
         <div class="skill-tags">
-          <span class="skill-tag">Azure DevOps</span>
-          <span class="skill-tag">GitHub Actions</span>
-          <span class="skill-tag">GitLab CI</span>
-          <span class="skill-tag">Docker</span>
-          <span class="skill-tag">Git</span>
-        </div>
+<span class="skill-tag">REST</span><span class="skill-tag">SOAP</span><span class="skill-tag">GraphQL</span><span class="skill-tag">Postman</span><span class="skill-tag">SoapUI</span><span class="skill-tag">RPC</span><span class="skill-tag">WSDL</span><span class="skill-tag">XSD</span><span class="skill-tag">XML</span>        </div>
       </div>
       <div class="skill-item">
-        <div class="skill-name">API &amp; Integration Testing</div>
+        <div class="skill-name">AI & Prompt Engineering</div>
         <div class="skill-tags">
-          <span class="skill-tag">REST</span>
-          <span class="skill-tag">GraphQL</span>
-          <span class="skill-tag">SOAP</span>
-          <span class="skill-tag">Postman</span>
-          <span class="skill-tag">SoapUI</span>
-        </div>
+<span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Context Engineering</span><span class="skill-tag">RAG (Retrieval-Augmented Generation)</span><span class="skill-tag">MCP (Model Context Protocol)</span><span class="skill-tag">GenAI</span><span class="skill-tag">Agentic Test Generation</span><span class="skill-tag">AI-driven Testing</span><span class="skill-tag">GitHub Copilot</span><span class="skill-tag">LLM-assisted Test Design</span>        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">CI/CD & DevOps</div>
+        <div class="skill-tags">
+<span class="skill-tag">Azure DevOps</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">GitLab CI</span><span class="skill-tag">Azure Portal</span><span class="skill-tag">TFS</span><span class="skill-tag">VSTS</span><span class="skill-tag">Git</span><span class="skill-tag">SVN</span><span class="skill-tag">Docker</span>        </div>
       </div>
       <div class="skill-item">
         <div class="skill-name">Databases</div>
         <div class="skill-tags">
-          <span class="skill-tag">MS SQL Server</span>
-          <span class="skill-tag">PostgreSQL</span>
-          <span class="skill-tag">Oracle</span>
-          <span class="skill-tag">MySQL</span>
-        </div>
+<span class="skill-tag">MS SQL Server</span><span class="skill-tag">Oracle Database</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span>        </div>
       </div>
       <div class="skill-item">
-        <div class="skill-name">Methodologies</div>
+        <div class="skill-name">Methodologies & Standards</div>
         <div class="skill-tags">
-          <span class="skill-tag">BDD</span>
-          <span class="skill-tag">TDD</span>
-          <span class="skill-tag">Scrum / Agile</span>
-          <span class="skill-tag">ISO/IEC 9126</span>
-          <span class="skill-tag">POM</span>
-          <span class="skill-tag">Test Estimation</span>
-          <span class="skill-tag">ROI Analysis</span>
-        </div>
+<span class="skill-tag">BDD (Behaviour Driven Development)</span><span class="skill-tag">TDD (Test Driven Development)</span><span class="skill-tag">Scrum</span><span class="skill-tag">Agile</span><span class="skill-tag">UAT (User Acceptance Testing)</span><span class="skill-tag">Continuous Testing</span><span class="skill-tag">In-Sprint Testing</span><span class="skill-tag">Test Estimation</span><span class="skill-tag">ROI Analysis</span><span class="skill-tag">ITIL</span><span class="skill-tag">RUP</span><span class="skill-tag">ISO/IEC 9126</span><span class="skill-tag">POM (Page Object Model)</span><span class="skill-tag">Fluent API</span>        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Design & Modelling</div>
+        <div class="skill-tags">
+<span class="skill-tag">UML</span><span class="skill-tag">Enterprise Architect</span><span class="skill-tag">XMLSpy</span><span class="skill-tag">OOP</span><span class="skill-tag">Functional Programming</span>        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Operating Systems & Infrastructure</div>
+        <div class="skill-tags">
+<span class="skill-tag">Windows</span><span class="skill-tag">Linux / Unix</span><span class="skill-tag">macOS</span><span class="skill-tag">Active Directory</span><span class="skill-tag">ISO/OSI</span><span class="skill-tag">IEEE 802.x</span><span class="skill-tag">CISCO</span>        </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CERTIFICATIONS ────────────────────────────────────────────── -->
   <section>
     <h2>Certifications</h2>
     <ul class="cert-list">
-      <li><span>ISTQB Foundation Level</span> — 2017</li>
-      <li><span>Effective Automated Testing with Selenium</span> — 2016</li>
-      <li><span>Selenium GRID</span> — 2019</li>
-      <li><span>Performance Tester</span> — 2019</li>
-      <li><span>Cypress Bootcamp</span> — 2021</li>
-      <li><span>Web Testing with Playwright</span> — 2023</li>
-      <li><span>Web Performance Tester</span> — 2023</li>
-      <li><span>Cypress Core v12</span> — 2023</li>
-      <li><span>Championship in K6.io</span> — 2023</li>
-      <li><span>AI for Developers and Testers</span> — 2025</li>
-      <li><span>Vibecoding AI</span> — 2025</li>
+      <li>
+        <span>Effective Automated Testing with Selenium</span>
+ — 2016      </li>
+      <li>
+        <span>ISTQB Certified Test Foundation Level</span>
+ — 2017      </li>
+      <li>
+        <span>Selenium GRID</span>
+ — 2019      </li>
+      <li>
+        <span>Performance Tester</span>
+ — 2019      </li>
+      <li>
+        <span>Cypress Bootcamp</span>
+ — 2021      </li>
+      <li>
+        <span>Web Testing with Playwright</span>
+ — 2023      </li>
+      <li>
+        <span>Web Performance Tester</span>
+ — 2023      </li>
+      <li>
+        <span>Cypress Core v12</span>
+ — 2023      </li>
+      <li>
+        <span>Championship in K6.io</span>
+ — 2023      </li>
+      <li>
+        <span>AI for Developers and Testers</span>
+ — 2025      </li>
+      <li>
+        <span>Vibecoding: Solve Problems with AI</span>
+ — 2025      </li>
     </ul>
   </section>
 
-  <!-- ── LANGUAGES ──────────────────────────────────────────────────── -->
   <section>
     <h2>Languages</h2>
     <div class="lang-list">
       <div class="lang-item">
         <div class="lang-name">Czech</div>
-        <div class="lang-level">Native</div>
+        <div class="lang-level">Native speaker</div>
       </div>
       <div class="lang-item">
         <div class="lang-name">English</div>
-        <div class="lang-level">B2 — Independent user</div>
+        <div class="lang-level">C1 — Independent user</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-name">Polish</div>
+        <div class="lang-level">B2 listening / A1 reading</div>
       </div>
       <div class="lang-item">
         <div class="lang-name">Slovak</div>
         <div class="lang-level">B2 — Independent user</div>
       </div>
-      <div class="lang-item">
-        <div class="lang-name">Polish</div>
-        <div class="lang-level">B2 listening</div>
-      </div>
     </div>
   </section>
 
-  <!-- ── CONFERENCES ────────────────────────────────────────────────── -->
   <section>
-    <h2>Conferences &amp; Workshops</h2>
-    <p class="conf-text">
-      Playwright User Event 2025 · Testmuconf 2024 · .NET Conf 2024 Prague · AI &amp; LLM v praxi DataScript 2024 ·
-      Online TestJS 2023 · OnlineTestConf 2023 · DockerCon 2023 · TestMu 2023 ·
-      Test Automation University Conference 2023 · Cypress Bootcamp 2021 · Test-stack 2020 ·
-      SeleniumConf 2019 · Performance Workshop 2019 · Pro-test 2016 Special · MDevCamp 2016 · WebExpo 2014
-    </p>
+    <h2>Conference Speaking & Community</h2>
+    <p class="conf-text">GDG Ahlen X Build with AI 2026 · Playwright User Event 2025 · Testmuconf 2024 · .NET Conf 2024 Prague · AI & LLM v praxi DataScript 2024 · Online TestJS 2023 · OnlineTestConf 2023 · DockerCon 2023 · TestMu 2023 · Test Automation University Conference 2023 · Cypress Bootcamp 2021 · Test-stack 2020 · SeleniumConf 2019 · Performance Workshop 2019 · Pro-test 2016 Special · MDevCamp 2016 · WebExpo 2014</p>
   </section>
+
 
 </div>
 </body>

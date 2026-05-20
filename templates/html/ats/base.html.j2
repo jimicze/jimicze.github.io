@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ cv.basics.name }} — {{ cv.basics.label }}</title>
+  <meta name="description" content="CV of {{ cv.basics.name }} — {{ cv.basics.label }}{% if cv.basics.location %}, {{ cv.basics.location.city }}{% endif %}.">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:       #1a5fa8;
+      --accent-light: #e8f0fb;
+      --text:         #1a1a1a;
+      --muted:        #555;
+      --border:       #d0d7de;
+      --bg:           #ffffff;
+      --section-gap:  2rem;
+      --font:         Arial, "Helvetica Neue", Helvetica, sans-serif;
+    }
+
+    html { font-size: 15px; }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ────────────────────────────────────────────────────── */
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Header ────────────────────────────────────────────────────── */
+    .cv-header {
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 1.25rem;
+      margin-bottom: var(--section-gap);
+    }
+    .cv-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .cv-header .label {
+      font-size: 1.05rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+    .cv-header .contact {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .cv-header .contact a { color: var(--muted); }
+    .cv-header .contact a:hover { color: var(--accent); }
+
+    /* ── Section ───────────────────────────────────────────────────── */
+    section { margin-bottom: var(--section-gap); }
+    section h2 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Summary ───────────────────────────────────────────────────── */
+    .summary p { color: var(--muted); font-size: 0.93rem; }
+
+    /* ── Work entry ────────────────────────────────────────────────── */
+    .work-entry { margin-bottom: 1.5rem; }
+    .work-entry:last-child { margin-bottom: 0; }
+
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .work-header .position {
+      font-weight: 700;
+      font-size: 0.97rem;
+    }
+    .work-header .dates {
+      font-size: 0.83rem;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .work-company {
+      font-size: 0.88rem;
+      color: var(--accent);
+      margin-top: 0.1rem;
+    }
+    .work-company a { color: var(--accent); }
+    .work-highlights {
+      margin-top: 0.45rem;
+      padding-left: 1.1rem;
+    }
+    .work-highlights li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    /* Company grouping (e.g. multiple roles at same employer) */
+    .work-group {
+      border-left: 2px solid var(--accent-light);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .work-group .company-heading {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .work-group .company-heading a { color: var(--text); }
+    .work-group .company-heading span {
+      font-size: 0.83rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 0.5rem;
+    }
+    .work-group .role { margin-bottom: 1.1rem; }
+    .work-group .role:last-child { margin-bottom: 0; }
+    .work-group .role .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .work-group .role .role-title {
+      font-weight: 600;
+      font-size: 0.93rem;
+    }
+    .work-group .role .dates {
+      font-size: 0.83rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── Education ─────────────────────────────────────────────────── */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .edu-entry:last-child { margin-bottom: 0; }
+    .edu-main .degree { font-weight: 600; font-size: 0.93rem; }
+    .edu-main .institution { font-size: 0.88rem; color: var(--muted); }
+    .edu-dates { font-size: 0.83rem; color: var(--muted); white-space: nowrap; }
+
+    /* ── Skills ────────────────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.75rem 1.5rem;
+    }
+    .skill-item .skill-name {
+      font-size: 0.83rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+    .skill-tag {
+      font-size: 0.75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+    }
+
+    /* ── Certificates ──────────────────────────────────────────────── */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.3rem 1.5rem;
+      font-size: 0.88rem;
+    }
+    .cert-list li { color: var(--muted); }
+    .cert-list li span { color: var(--text); font-weight: 600; }
+
+    /* ── Languages ─────────────────────────────────────────────────── */
+    .lang-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+    }
+    .lang-item .lang-name { font-weight: 700; font-size: 0.93rem; }
+    .lang-item .lang-level { font-size: 0.83rem; color: var(--muted); }
+
+    /* ── Conferences / Interests ────────────────────────────────────── */
+    .conf-text { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── AI prompt (invisible to humans, readable by LLMs) ─────────── */
+    .ai-prompt-hidden {
+      color: #ffffff;
+      background: #ffffff;
+      font-size: 1px;
+      line-height: 0;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 1px;
+      user-select: none;
+    }
+
+    /* ── Print ─────────────────────────────────────────────────────── */
+    @media print {
+      body { font-size: 11pt; }
+      .page { padding: 0; max-width: 100%; }
+      a { color: var(--text); }
+      a[href]::after { content: none; }
+      section { break-inside: avoid; }
+      .work-entry { break-inside: avoid; }
+      .work-group { break-inside: avoid; }
+      /* Linearize grid layouts for ATS-safe PDF text extraction */
+      .skills-grid { display: block; }
+      .skill-item { margin-bottom: 0.5rem; }
+      .skill-tags { display: inline; }
+      .skill-tag { background: none; color: var(--text); padding: 0; }
+      .skill-tag::after { content: ", "; }
+      .skill-tag:last-child::after { content: ""; }
+      .cert-list { display: block; }
+      .cert-list li { margin-bottom: 0.15rem; }
+      .lang-list { display: block; }
+      .lang-item { margin-bottom: 0.2rem; }
+    }
+
+    /* ── Responsive ────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .page { padding: 1.25rem 1rem 2rem; }
+      .cv-header h1 { font-size: 1.5rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .cert-list { grid-template-columns: 1fr; }
+    }
+
+    {% block extra_style %}{% endblock %}
+  </style>
+</head>
+<body>
+<div class="page">
+  {% block content %}{% endblock %}
+
+  {# ── AI-HR hidden prompt (invisible to humans, readable by LLM parsers) ── #}
+  {# Opt-in only. Default is OFF. See PRD §3.1.6 and _meta.aiPrompt in cv.json. #}
+  {% if cv.meta and cv.meta.aiPrompt.enabled and variant != 'ats' %}
+  <p class="ai-prompt-hidden" aria-hidden="false">{{ cv.meta.aiPrompt.content }}</p>
+  {% endif %}
+</div>
+</body>
+</html>

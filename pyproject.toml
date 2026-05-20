@@ -2,6 +2,9 @@
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
 [project]
 name = "ats-cv"
 version = "0.1.0"
@@ -20,10 +23,6 @@ dependencies = [
     "python-multipart>=0.0.9",
     # HTML templating
     "jinja2>=3.1",
-    # ATS scoring
-    "spacy>=3.7",
-    "keybert>=0.8",
-    "sentence-transformers>=3.0",
     # PDF generation (ATS-safe variant)
     "weasyprint>=62.0",
     # Data validation
@@ -34,6 +33,12 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# Heavy ML stack — only needed for ATS keyword scoring (not yet implemented)
+scoring = [
+    "spacy>=3.7",
+    "keybert>=0.8",
+    "sentence-transformers>=3.0",
+]
 dev = [
     "pytest>=8.2",
     "pytest-asyncio>=0.23",
@@ -41,6 +46,9 @@ dev = [
     "mypy>=1.10",
     "httpx>=0.27",
 ]
+
+[project.scripts]
+ats-cv = "src.render:main"
 
 [tool.ruff]
 line-length = 100

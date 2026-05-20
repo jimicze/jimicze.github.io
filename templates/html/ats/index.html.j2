@@ -1,0 +1,164 @@
+{% extends "base.html.j2" %}
+
+{% block content %}
+
+  {# ── HEADER ──────────────────────────────────────────────────────────── #}
+  <header class="cv-header">
+    <h1>{{ cv.basics.name }}</h1>
+    <div class="label">{{ cv.basics.label }}</div>
+    <div class="contact">
+      {% if cv.basics.location %}
+      <span>{{ cv.basics.location.city }}{% if cv.basics.location.countryCode %}, {{ cv.basics.location.countryCode }}{% endif %}</span>
+      {% endif %}
+      {% if cv.basics.email %}
+      <span><a href="mailto:{{ cv.basics.email }}">{{ cv.basics.email }}</a></span>
+      {% endif %}
+      {% if cv.basics.phone %}
+      <span><a href="tel:{{ cv.basics.phone | replace(' ', '') }}">{{ cv.basics.phone | format_phone }}</a></span>
+      {% endif %}
+      {% for profile in cv.basics.profiles %}
+      <span><a href="{{ profile.url }}" target="_blank" rel="noopener">{{ profile.network }}</a></span>
+      {% endfor %}
+    </div>
+  </header>
+
+  {# ── SUMMARY ─────────────────────────────────────────────────────────── #}
+  {% if cv.basics.summary %}
+  <section class="summary">
+    <h2>Profile</h2>
+    <p>{{ cv.basics.summary }}</p>
+  </section>
+  {% endif %}
+
+  {# ── WORK EXPERIENCE ─────────────────────────────────────────────────── #}
+  {% if grouped_work %}
+  <section>
+    <h2>Work Experience</h2>
+
+    {% for group in grouped_work %}
+
+      {% if group.grouped %}
+        {# Multi-role company group (e.g. Vendavo with 3 consecutive roles) #}
+        <div class="work-group">
+          <div class="company-heading">
+            {% if group.url %}<a href="{{ group.url }}" target="_blank" rel="noopener">{{ group.name }}</a>{% else %}{{ group.name }}{% endif %}
+            <span>{{ group.start_date | fmt_date }} – {{ group.end_date | fmt_date }} · {{ group.entries[0].location }}</span>
+          </div>
+
+          {% for entry in group.entries %}
+          <div class="role">
+            <div class="role-header">
+              <span class="role-title">{{ entry.position }}</span>
+              <span class="dates">{{ entry.startDate | fmt_date }} – {{ entry.endDate | fmt_date }}</span>
+            </div>
+            {% if entry.highlights %}
+            <ul class="work-highlights">
+              {% for h in entry.highlights %}<li>{{ h }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+
+      {% else %}
+        {# Single-role entry #}
+        {% set entry = group.entry %}
+        <div class="work-entry">
+          <div class="work-header">
+            <span class="position">{{ entry.position }}</span>
+            <span class="dates">{{ entry.startDate | fmt_date }} – {{ entry.endDate | fmt_date }}</span>
+          </div>
+          <div class="work-company">
+            {% if entry.url %}<a href="{{ entry.url }}" target="_blank" rel="noopener">{{ entry.name }}</a>{% else %}{{ entry.name }}{% endif %}
+            {% if entry.location %} · {{ entry.location }}{% endif %}
+          </div>
+          {% if entry.highlights %}
+          <ul class="work-highlights">
+            {% for h in entry.highlights %}<li>{{ h }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {# ── EDUCATION ───────────────────────────────────────────────────────── #}
+  {% if cv.education %}
+  <section>
+    <h2>Education</h2>
+    {% for edu in cv.education %}
+    <div class="edu-entry">
+      <div class="edu-main">
+        <div class="degree">
+          {{ edu.studyType }}{% if edu.area %} — {{ edu.area }}{% endif %}
+        </div>
+        <div class="institution">
+          {% if edu.url %}<a href="{{ edu.url }}" target="_blank" rel="noopener">{{ edu.institution }}</a>{% else %}{{ edu.institution }}{% endif %}
+        </div>
+      </div>
+      <div class="edu-dates">{{ edu.startDate | fmt_year }} – {{ edu.endDate | fmt_year }}</div>
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {# ── SKILLS ──────────────────────────────────────────────────────────── #}
+  {% if cv.skills %}
+  <section>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      {% for skill in cv.skills %}
+      <div class="skill-item">
+        <div class="skill-name">{{ skill.name }}</div>
+        <div class="skill-tags">
+          {% for kw in skill.keywords %}<span class="skill-tag">{{ kw }}</span>{% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {# ── CERTIFICATIONS ──────────────────────────────────────────────────── #}
+  {% if cv.certificates %}
+  <section>
+    <h2>Certifications</h2>
+    <ul class="cert-list">
+      {% for cert in cv.certificates %}
+      <li>
+        <span>{% if cert.url %}<a href="{{ cert.url }}" target="_blank" rel="noopener">{{ cert.name }}</a>{% else %}{{ cert.name }}{% endif %}</span>
+        {% if cert.date %} — {{ cert.date }}{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {# ── LANGUAGES ───────────────────────────────────────────────────────── #}
+  {% if cv.languages %}
+  <section>
+    <h2>Languages</h2>
+    <div class="lang-list">
+      {% for lang in cv.languages %}
+      <div class="lang-item">
+        <div class="lang-name">{{ lang.language }}</div>
+        <div class="lang-level">{{ lang.fluency }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {# ── CONFERENCES & INTERESTS ─────────────────────────────────────────── #}
+  {% for interest in cv.interests %}
+  {% if interest.keywords %}
+  <section>
+    <h2>{{ interest.name }}</h2>
+    <p class="conf-text">{{ interest.keywords | join(' · ') }}</p>
+  </section>
+  {% endif %}
+  {% endfor %}
+
+{% endblock %}

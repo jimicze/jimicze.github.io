@@ -100,6 +100,27 @@ ats-cv docx --help
 
 ---
 
+## Publish to GitHub Pages (manually)
+
+After editing `data/cv.json`, run these three commands to regenerate the HTML and push it live:
+
+```bash
+# 1. Activate the virtual environment (if not already active)
+source .venv/bin/activate
+
+# 2. Re-render public/index.html from cv.json
+python -m src.render html --variant ats --out public/index.html
+
+# 3. Commit and push — GitHub Actions deploys automatically
+git add public/index.html
+git commit -m "cv: describe your change here"
+git push origin main
+```
+
+The GitHub Actions workflow (`.github/workflows/deploy.yml`) picks up the push and deploys `public/` to **https://jimicze.github.io/** within ~30 seconds.
+
+---
+
 ## Update
 
 Re-run the installer at any time — it will pull the latest changes and reinstall:

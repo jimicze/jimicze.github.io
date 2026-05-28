@@ -25,7 +25,7 @@
   {# ── SUMMARY ─────────────────────────────────────────────────────────── #}
   {% if cv.basics.summary %}
   <section class="summary">
-    <h2>Profile</h2>
+    <h2>Summary</h2>
     <p>{{ cv.basics.summary }}</p>
   </section>
   {% endif %}
@@ -41,9 +41,12 @@
         {# Multi-role company group (e.g. Vendavo with 3 consecutive roles) #}
         <div class="work-group">
           <div class="company-heading">
-            {% if group.url %}<a href="{{ group.url }}" target="_blank" rel="noopener">{{ group.name }}</a>{% else %}{{ group.name }}{% endif %}
-            <span>{{ group.start_date | fmt_date }} – {{ group.end_date | fmt_date }} · {{ group.entries[0].location }}</span>
+            <span>{% if group.url %}<a href="{{ group.url }}" target="_blank" rel="noopener">{{ group.name }}</a>{% else %}{{ group.name }}{% endif %}</span>
+            <span class="dates">{{ group.start_date | fmt_date }} – {{ group.end_date | fmt_date }}</span>
           </div>
+          {% if group.entries[0].location %}
+          <div class="company-location">{{ group.entries[0].location }}</div>
+          {% endif %}
 
           {% for entry in group.entries %}
           <div class="role">
@@ -133,6 +136,37 @@
       </li>
       {% endfor %}
     </ul>
+  </section>
+  {% endif %}
+
+  {# ── PROJECTS ────────────────────────────────────────────────────────── #}
+  {% if cv.projects %}
+  <section>
+    <h2>Projects</h2>
+    {% for proj in cv.projects | sort(attribute='startDate', reverse=True) %}
+    <div class="work-entry">
+      <div class="work-header">
+        <div class="work-title-block">
+          <div class="work-position">{% if proj.url %}<a href="{{ proj.url }}" target="_blank" rel="noopener">{{ proj.name }}</a>{% else %}{{ proj.name }}{% endif %}</div>
+          <div class="work-company">{% if proj.entity %}{{ proj.entity }}{% endif %}{% if proj.roles %} · {{ proj.roles | join(', ') }}{% endif %}</div>
+        </div>
+        {% if proj.startDate or proj.endDate %}
+        <div class="work-dates">{{ proj.startDate | fmt_date }} – {{ proj.endDate | fmt_date }}</div>
+        {% endif %}
+      </div>
+      {% if proj.description %}<p class="work-summary">{{ proj.description }}</p>{% endif %}
+      {% if proj.highlights %}
+      <ul class="work-highlights">
+        {% for h in proj.highlights %}<li>{{ h }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% if proj.keywords %}
+      <div class="skill-tags" style="margin-top:0.4rem;">
+        {% for kw in proj.keywords %}<span class="skill-tag">{{ kw }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
   </section>
   {% endif %}
 
